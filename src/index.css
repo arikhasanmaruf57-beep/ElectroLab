@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg-main: #0B1120;
   --bg-sidebar: #111827;
@@ -11,7 +13,7 @@
   --primary: #2563EB;
   --accent-electric: #38BDF8;
   --accent-glow: rgba(56, 189, 248, 0.4);
-  
+
   --success: #22C55E;
   --warning: #F59E0B;
   --danger: #EF4444;
@@ -42,13 +44,17 @@
   padding: 0;
 }
 
+html, body, #root {
+  min-height: 100%;
+  width: 100%;
+}
+
 html, body {
   height: 100%;
-  width: 100%;
-  overflow: hidden;
 }
 
 body {
+  min-width: 320px;
   font-family: var(--font-sans);
   background-color: var(--bg-main);
   color: var(--text-main);
@@ -57,7 +63,7 @@ body {
 }
 
 #root {
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -108,6 +114,10 @@ button {
   transition: all var(--transition-fast);
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 input, select, textarea {
   background-color: var(--bg-panel);
   border: 1px solid var(--border-main);
@@ -118,8 +128,12 @@ input, select, textarea {
   transition: border-color var(--transition-fast);
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   border-color: var(--accent-electric);
+}
+
+svg {
+  flex-shrink: 0;
 }
 
 @media (max-width: 1024px) {
